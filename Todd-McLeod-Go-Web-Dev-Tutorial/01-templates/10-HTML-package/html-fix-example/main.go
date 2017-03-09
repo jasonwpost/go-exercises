@@ -21,8 +21,8 @@ func init(){
 func main(){
 
   home := Page{
-    Title: "Nothing is escaped",
-    Heading: "Nothing is escaped with text/template",
+    Title: "XSS is escaped",
+    Heading: "XSS is escaped with html/template",
     Input: `<script>alert("Yow!");</script>`,
   }
 
