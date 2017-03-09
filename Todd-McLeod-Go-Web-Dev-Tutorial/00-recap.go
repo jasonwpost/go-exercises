@@ -45,6 +45,15 @@ func main(){
   saySomething(p1)
   saySomething(sa1)
 
+  // this is an anon struct
+  p2 := struct {
+    fname string
+    lname string
+  }{
+    "James",
+    "Bond",
+}
+
 }
 
 type person struct { // struct is ~ object
