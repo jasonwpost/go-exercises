@@ -31,7 +31,7 @@ var fm = template.FuncMap{
 
 func init(){
   // template.Must needs a pointer to a template, so must create a new
-  // one, attach our fm functions (returns Template *), and then parse the files to
+  // one, attach our fm functions (returns Template *), and then parse to
   // add our files
   tpl = template.Must(template.New("").Funcs(fm).ParseFiles("tpl.gohtml"))
 }
