@@ -1,4 +1,3 @@
-// Run 02-Reading/main.go to serve this
 
 package main
 
@@ -43,9 +42,9 @@ func request(conn net.Conn){
     ln := scanner.Text()
     fmt.Println(ln)
     if i == 0 {
-			// request
-			m := strings.Fields(ln)[0]
-			fmt.Println("***METHOD", m)
+      // request
+      m := strings.Fields(ln)[0]
+      fmt.Println("***METHOD", m)
 		}
     if (strings.Contains(ln, "Host")){
       sampString = ln[6:]

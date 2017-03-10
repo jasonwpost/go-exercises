@@ -1,4 +1,3 @@
-// Run 02-Reading/main.go to serve this
 
 package main
 
@@ -41,10 +40,10 @@ func request(conn net.Conn){
     ln := scanner.Text()
     fmt.Println(ln)
     if i == 0 {
-			// request
-			m := strings.Fields(ln)[0]
-			fmt.Println("***METHOD", m)
-      // Routing 
+      // request
+      m := strings.Fields(ln)[0]
+      fmt.Println("***METHOD", m)
+      // Routing
       path := strings.Fields(ln)[1]
       if path == "/" {
         respond(conn, "Welcome Home")
