@@ -3,6 +3,9 @@
 //  ServeHTTP(ResponseWriter, *Request)
 //}
 
+// ListenAndServe basically does everything explained
+// in the 02-make-server folder automagically.
+
 package main
 
 import (
