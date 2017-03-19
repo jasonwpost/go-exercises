@@ -1,0 +1,28 @@
+{{template "header"}}
+<!-- enctype is the encoding type that forms the body
+    of the request in some way. It can be either
+    application/x-www-form-urlencoded
+    multipart/form-data
+    text/plain
+    Don't use text/plain in production - debugging only
+  -->
+<form method="POST" enctype="application/x-www-form-urlencoded">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="first">
+    <br>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="last">
+    <br>
+    <label for="sub">Subscribed</label>
+    <input type="checkbox" id="sub" name="subscribe">
+    <br>
+    <input type="submit">
+</form>
+
+<br>
+
+{{if .}}
+<h1>BODY: {{.}}</h1>
+{{end}}
+
+{{template "footer"}}
