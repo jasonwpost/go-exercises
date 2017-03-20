@@ -1,4 +1,4 @@
-// Cookies usually have a limit of 4096 chars
+// Cookies usually has a limit of 4096 chars
 // chrome currently is set to a max of 180 Cookies
 // written per site. For other browsers including IE
 // it is much lower. Safari's limit is around 600
