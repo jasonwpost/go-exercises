@@ -3,9 +3,10 @@ package main
 import (
   "html/template"
   "net/http"
+  "github.com/satori/go.uuid"
 )
 
-var tpl *template.template
+var tpl *template.Template
 
 func init(){
   tpl = template.Must(template.ParseGlob("templates/*"))
@@ -18,5 +19,19 @@ func main(){
 }
 
 func index(w http.ResponseWriter, req *http.Request){
-  tpl.ExecuteTemplate(w, "index.gohtml", nil)
+  c := getCookie(w, req)
+  tpl.ExecuteTemplate(w, "index.gohtml", c.Value)
+}
+
+func getCookie(w http.ResponseWriter, req *http.Request) *http.Cookie {
+  c, err := req.Cookie("session")
+  if err != nil {
+    sID := uuid.NewV4()
+    c = &http.Cookie {
+      Name: "session",
+      Value: sID.String(),
+    }
+    http.SetCookie(w, c)
+  }
+  return c;
 }
