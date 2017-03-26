@@ -5,8 +5,9 @@
     <title>INDEX</title>
   </head>
   <body>
+    <h1>Your pictures: </h1>
     {{ range .}}
-    <h2>{{.}}</h2>
+    <img src="/public/pics/{{.}}" width="400px">
     {{ end }}
 
     <form method="post" enctype="multipart/form-data">
