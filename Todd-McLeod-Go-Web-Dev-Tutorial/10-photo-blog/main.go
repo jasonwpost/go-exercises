@@ -4,6 +4,7 @@ import (
   "html/template"
   "net/http"
   "github.com/satori/go.uuid"
+  "strings"
 )
 
 var tpl *template.Template
@@ -20,7 +21,9 @@ func main(){
 
 func index(w http.ResponseWriter, req *http.Request){
   c := getCookie(w, req)
-  tpl.ExecuteTemplate(w, "index.gohtml", c.Value)
+  c = assignValues(w, c);
+  cookieSlice := strings.Split(c.Value, "|")
+  tpl.ExecuteTemplate(w, "index.gohtml", cookieSlice)
 }
 
 func getCookie(w http.ResponseWriter, req *http.Request) *http.Cookie {
@@ -34,4 +37,23 @@ func getCookie(w http.ResponseWriter, req *http.Request) *http.Cookie {
     http.SetCookie(w, c)
   }
   return c;
+}
+
+func assignValues(w http.ResponseWriter, c *http.Cookie) *http.Cookie {
+  p1 := "cookies.jpg"
+  p2 := "biscuits.jpg"
+  p3 := "jaffacakes.jpg"
+  str := c.Value
+  if !strings.Contains(str, p1){
+    str += "|" + p1
+  }
+  if !strings.Contains(str, p2){
+    str += "|" + p2
+  }
+  if !strings.Contains(str, p3){
+    str += "|" + p3
+  }
+  c.Value = str
+  http.SetCookie(w, c)
+  return c
 }

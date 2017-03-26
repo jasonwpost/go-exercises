@@ -5,6 +5,8 @@
     <title>INDEX</title>
   </head>
   <body>
-    <h1>Cookie Value: {{.}}</h1>
+    {{ range .}}
+    <h1>{{.}}</h1>
+    {{ end }}
   </body>
 </html>
